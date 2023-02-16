@@ -1,0 +1,114 @@
+\documentclass[preview,12pt]{article}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{ragged2e}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+
+\geometry{letterpaper, margin=1in}
+
+\begin{document}
+
+\noindent PDE and Fourier\newline
+Josh Coffey \newline
+Homework 3 \newline
+3/5/2020 \newline
+
+\section*{(1)}
+    Sketch the Fourier Series for the following labeled $f(x)$ on the interval $[-3\pi,3\pi]$.  Assume the coefficients are defined with $L=\pi$.
+    \subsection*{(a)}
+        $$f(x)=1+x$$
+    \vspace{2in}
+    \subsection*{(b)}
+        \[   
+        f(x) = 
+        \begin{cases}
+         x &\quad\text{for } x<0, \\
+         x+1 &\quad\text{for } x\geq0 \\
+        \end{cases}
+        \]
+    \vspace{2in}
+\section*{(2)}
+    Use the known cosine series expansion
+    $$x^2\sim\frac{L^2}{3}+\Sigma_{n=1}^\infty \frac{4L^2}{n^2\pi^2}(-1)^ncos(\frac{n\pi x}{L}) \textrm{ to show that } \frac{\pi^2}{6}=\Sigma_{n=1}^\infty \frac{1}{n^2}$$
+    Assuming that L=$\pi$,
+    $$x^2=\frac{\pi^2}{3}+\Sigma_{n=1}^\infty\frac{4(-1)^n}{n^2}cos(nx)$$
+    know that $cos(nx)$ in this summation can be rewritten as $(-1)^n$.
+    $$x^2=\frac{\pi^2}{3}+\Sigma_{n=1}^\infty\frac{4(-1)^n}{n^2}(-1)^n$$
+    This results in $(-1)^n(-1)^n=1$ because when n is odd the two negatives will cancel.
+    $$x^2=\frac{\pi^2}{3}+\Sigma_{n=1}^\infty\frac{4}{n^2}$$
+    Choosing $x=\pi$ gives
+    $$\pi^2=\frac{\pi^2}{3}+4\Sigma_{n=1}^\infty\frac{1}{n^2}$$
+    $$\frac{2\pi^2}{3}=4\Sigma_{n=1}^\infty\frac{1}{n^2}$$
+    $$\frac{2\pi^2}{12}=\frac{\pi^2}{6}=\Sigma_{n=1}^\infty\frac{1}{n^2}$$
+    
+\section*{(3)}
+    Let $f(x)=|{sin(x)}|$ on the interval $[-\pi,\pi]$.  
+    \subsection*{(a)}
+        Find the FS for $f$.  If you use Mathematica or a calculator or a table to do the integrals, state that you have done so in the problem.  
+        $$f(x)=a_0+\Sigma_{n=1}^\infty\left(a_ncos(\frac{n\pi x}{L})+b_nsin(\frac{n \pi x}{L})\right)$$
+        $$a_0=\frac{1}{2L}\int_{-L}^Lf(x)dx$$
+        $$a_n=\frac{1}{L}\int_{-L}^Lf(x)cos(\frac{n \pi x}{L})dx$$
+        $$b_n=\frac{1}{L}\int_{-L}^Lf(x)sin(\frac{n \pi x}{L})dx$$
+        In this case, $L=\pi$ and $|sin(x)|$ is an even function
+        $$a_0=\frac{1}{\pi}\int_{0}^\pi |sin(x)| dx$$
+        $$a_0=\frac{1}{\pi}|(-cos(\pi)+cos(0))|=\frac{1}{\pi}|(-(-1)+1)|=\frac{2}{\pi}$$
+        $$b_n=\int_{-L}^L\textrm{even}*\textrm{odd }dx=\int_{-L}^L\textrm{odd }dx=0$$
+        $$a_n=\int_{-L}^L\textrm{even}*\textrm{even }dx=\int_{-L}^L\textrm{even }dx=2\int_{0}^L\textrm{even }dx=\frac{2}{\pi}\int_{0}^\pi |sin(x)|cos(nx)dx$$
+        Using the solution given by MATLAB:
+        $$a_n=\frac{2}{\pi}\left(-\frac{cos(n\pi)+1}{n^2-1}\right)$$
+        The Fourier Series for $f(x)=|sin(x)|$ on the interval $[-\pi,\pi]$ is then:
+        $$f(x)=\frac{2}{\pi}+\Sigma_{n=1}^\infty \left(\frac{2}{\pi}\left(-\frac{cos(n\pi)+1}{n^2-1}\right)cos(nx)\right)$$
+    \subsection*{(b)}
+        Find the Fourier Series for
+        \[   
+        g(x) = 
+        \begin{cases}
+         0 &\quad\text{for } -\pi \leq x \leq 0, \\
+         sin(x) &\quad\text{for } 0<x\leq\pi \\
+        \end{cases}
+        \]
+        This function is half of the previous function from part (a)
+        $$FS(g(x))=\frac{1}{\pi}+\Sigma_{n=1}^\infty \left(\frac{1}{\pi}\left(-\frac{cos(n\pi)+1}{n^2-1}\right)cos(nx)\right)$$
+        from $0<x\leq\pi$ and 0 from $-\pi\leq x \leq 0$
+        
+\section*{(4)}
+    Find the Fourier Series for $f(x)=(1-x^2)^2 $ on $[-\pi,\pi]$.  
+    $$f(x)=(1+x^2)^2=(1-x^2)(1-x^2)=(1-2x^2+x^4)$$
+    Know that 
+    $$f(x)=a_0+\Sigma_{n=1}^\infty a_ncos(\frac{n \pi x}{L})+b_nsin(\frac{n \pi x}{L})$$
+    $$a_0=\frac{1}{2L}\int_{-L}^Lf(x)dx$$
+    $$a_n=\frac{1}{L}\int_{-L}^Lf(x)cos(\frac{n \pi x}{L})dx$$
+    $$b_n=\frac{1}{L}\int_{-L}^Lf(x)sin(\frac{n \pi x}{L})dx$$
+    and $L=\pi$
+    $$a_0=\frac{1}{2\pi}\int_{-\pi}^\pi(1-x^2)^2dx=\frac{1}{\pi}\int_{0}^\pi(1-x^2)^2dx$$
+    $$a_0=\frac{1}{\pi}\int_{0}^\pi1-2x^2+x^4dx=\frac{1}{\pi}(x-\frac{2}{3}x^3+\frac{1}{5}x^5)|_0^\pi=1-\frac{2}{3}\pi^2+\frac{\pi^4}{5}$$
+    $$a_n=\frac{1}{\pi}\int_{-\pi}^\pi (1-x^2)^2cos(nx)dx=\frac{2}{\pi}\int_0^\pi(1-x^2)^2cos(nx)dx$$
+    $$a_n=\frac{2}{\pi}\int_0^\pi(1-2x^2+x^4)cos(nx)dx=\frac{2}{\pi}\int_0^\pi cos(nx)-2x^2cos(nx)+x^4cos(nx)dx$$
+    $$a_n=\frac{2}{\pi}[\frac{sin(n\pi)}{n}+\left(\frac{-n^2\pi^2sin(n\pi)+4sin(n\pi)-4n\pi cos(n\pi)}{n^3}\right)$$
+    $$+\left(\frac{24sin(n\pi)+4n^3\pi^3cos(n\pi)-12n^2\pi^2sin(n\pi)+n^4\pi^4sin(n\pi)-24n\pi cos(n\pi)}{n^5}\right)]$$
+    $sin(n\pi)=0$ and $cos(n\pi)=(-1)^n$
+    $$a_n=\frac{2}{\pi}\left[0+\frac{4\pi(-1)^n}{n^2}+\frac{4n^2\pi^3(-1)^n-24\pi(-1)^n}{n^4}\right]$$
+    $$a_n=\frac{2}{\pi}\left[\left(\frac{4\pi(-1)^n}{n^2}\right)\left(1+\frac{n^2\pi^2-6}{n^2}\right)\right]=\left(\frac{8(-1)^n}{n^2}\right)\left(1+\frac{n^2\pi^2-6}{n^2}\right)$$
+    Then the Fourier Series for f(x) is
+    $$1-\frac{2}{3}\pi^2+\frac{\pi^4}{5}+\Sigma_{n=1}^\infty \left(\frac{8(-1)^n}{n^2}\right)\left(1+\frac{n^2\pi^2-6}{n^2}\right)cos(nx)$$
+    Note: could also plug known Fourier Series for $x^2$ and $x^4$ into $(1-x^2)^2$
+    
+\section*{(5)}
+    Consider the sequence of functions $f_N(x)(N=1,2,3,...)$ defined on the interval $0\leq x \leq 1$ by the equation
+    \[   
+        f_N(x) = 
+        \begin{cases}
+         0 &\quad\text{when } 0 \leq x \leq 1/N, \\
+         \sqrt{N} &\quad\text{when  } 1/N<x<2/N \\
+         0 &\quad\text{when } 2/N\leq x \leq1 \\
+        \end{cases}
+    \]
+    Show that this sequence converges pointwise to the function $f(x)=0$ for $0\leq x\leq1$ but that it does NOT converge in the least squares norm to 0.  That is $\int_0^1(f_N(x))^2dx$ does not tend to 0.
+    $$\int_0^1(f_N(x))^2dx=\int_0^{1/N} 0^2 dx + \int_{1/N}^{2/N}\sqrt{N}^2dx+\int_{2/N}^1 0^2dx$$
+    $$\int_0^1(f_N(x))^2dx=\int_{1/N}^{2/N}Ndx=N(\frac{2}{N}-\frac{1}{N})=N(\frac{1}{N})=1\neq 0$$
+    Between $0$ and  $\frac{1}{N}$ and $\frac{2}{N}$ and $1$,  $f_N(x_0)=0$.  For any $x_0$ between 1/N and 2/N, $f_n(x_0)=\sqrt{N}$.  As N approaches infinity, the interval 1/N and 2/N shrinks to an infinitesimal size and the limit as x approaches $x_0$ from the left and from the right becomes the same, i.e. 0.  Thus the sequence converges pointwise to f(x)=0.
+\end{document}
