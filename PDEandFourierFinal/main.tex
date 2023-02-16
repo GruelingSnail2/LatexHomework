@@ -1,0 +1,202 @@
+\documentclass[preview,12pt]{article}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{ragged2e}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+
+\geometry{letterpaper, margin=1in}
+
+\begin{document}
+
+\noindent PDE and Fourier\newline
+Josh Coffey \newline
+Final \newline
+5/5/2020 \newline
+
+\section*{(1)}
+    Use the method of characteristics to solve the following quasilinear PDE problem in the region $-\infty<x<\infty$ and $t>0.$
+    $$u_t+xu_x=-2tu^2 \textrm{ where } u(x,0)=sech(x)$$
+    Note:
+    $$sech(x)=\frac{1}{cosh(x)}=\frac{2}{e^x+e^{-x}}$$
+    $$sech(0)=1$$
+    $$sech(x)->0\textrm{ as }x->\pm\infty$$
+    
+    Method of Characteristics:
+    $$u_t+vu_x=f$$
+    $$u(x,0)=\phi(x)$$
+    $$v=x;\ f=-2tu^2;\ \phi(x)=sech(x)$$
+    At $x_0$,
+    $$U'(t)=f=-2tU^2$$
+    $$U(0)=sech(x)$$
+    $$X'(t)=x$$
+    $$X'(0)=x_0$$
+    Solving the $U$ ODE:
+    $$\frac{dU}{dt}=-2tU^2$$
+    $$\frac{dU}{U^2}=-2tdt$$
+    $$-\frac{1}{U}=-t^2+C$$
+    $$U(t)=\frac{1}{t^2+C}$$
+    $$U(0)=sech(x_0)=\frac{1}{C}\implies C=cosh(x_0)$$
+    $$U(t)=\frac{1}{t^2+cosh(x_0)}$$
+    Solving the $X$ ODE:
+    $$\frac{dX}{dt}=X$$
+    $$ln(X)=t+C$$
+    $$X=Ce^t$$
+    $$X(0)=x_0=C$$
+    $$X(t)=x_0e^t$$
+    Solving for $x_0$:
+    $$x_0=xe^{-t}$$
+    Plugging $x_0$ into $U(t)$ gives:
+    $$u(x,t)=\frac{1}{t^2+cosh(xe^{-t})}$$
+
+\section*{(2)}
+    Consider the Sturm-Liouville Problem:
+    $$Lu=-\lambda u \textrm{ with } Lu(x)=\left((1+x^2)u'(x)\right)' \textrm{ and BCs } u'(0)=u(1)=0$$
+    What are $p$, $q$, and $\sigma$? Show that if $\lambda$ is an eigenvalue associated with eigenfunction $\phi$ then $\lambda \geq 0$. \newline
+    In this problem, 
+    $$p(x)=(1+x^2)$$
+    $$q(x)=0$$
+    $$\sigma=1$$
+    Because $p(x)\geq0$, $q(x)\leq 0$, $\sigma\geq 0$, and $puu'|^1_0=(1+1^2)u(1)u'(1)-(1+0^2)u(0)u'(0)=0-0=0$, then from the Rayleigh Ritz Quotient, $\lambda \geq 0$.
+
+\section*{(3)}
+    Consider the following heat conduction problem: Find $u=u(x,t)$ so 
+    $$u_t-u_{xx}=-e^x \textrm{ with } u(0,t)=0 \textrm{ and } u_x(1,t)=0$$
+    Determine the Steady State solution $U=U(x)$
+    $$u_t=0 -> u_{xx}=e^x$$
+    $$u_x=e^x+A$$
+    $$u=e^x+Ax+B$$
+    $$u_x(1)=0 \implies e^1+A=0 \implies A=-e$$
+    $$u(0)=0 \implies e^0+e(0)+B=1+B=0 \implies B=-1$$
+    $$u(x)=e^x-ex-1$$
+    
+\section*{(4)}
+    Solve the following Initial/Boundary Value Problem:
+    $$u_t-(2t+1)u_{xx}=0$$
+    with BCs
+    $$u_x(0,t)=u_x(\pi,t)=0$$
+    and IC
+    $$u(x,0)=3+7cos(x)$$
+    Guess
+    $$u(x,t)=a_0+\Sigma_{n=0}^\infty a_ncos(nx)$$
+    Plug this guess into DE
+    $$a_0'+\Sigma_{n=0}^\infty a_n'cos(nx)-(2t+1)(a_n)(-\Sigma_{n=0}^\infty cos(nx))n^2=0$$
+    $$a_0'(t)+\Sigma_{n=0}^\infty (a_n'+(2t+1)a_nn^2)cos(nx)=0$$
+    Using ICs:
+    $$u(x,0)=a_0(0)+\Sigma_{n=0}^\infty a_n(0)cos(nx)=3+7cos(x)$$
+    By inspection:
+    $$a_0(0)=3$$
+    $$a_n(0)=7$$
+    for the $n=1$ case. \newline
+    Looking at the DE
+    $$a_0'(t)=0 \implies a_0(t)=C$$
+    $$a_0(0)=C=3 \implies a_0(t)=3$$
+    Also,
+    $$a_n'+(2t+1)a_nn^2=0$$
+    $$a_n'/a_n=-n^2(2t+1)\implies ln(a_n)=\int(-n^2)(2t+1)dt=-n^2(t^2+t+C)$$
+    $$a_n=e^{-n^2(t^2+t+C)}=Ce^{-n^2(t^2+t)}$$
+    $$a_n(0)=7=Ce^{-n^2(0^2+0)} \implies C=7$$
+    $$a_n(t)=7e^{-n^2(t^2+t)}$$
+    Then $u(x,t)$ is
+    $$3+\Sigma_{n=0}^\infty 7e^{-n^2(t^2+t)}cos(nx)$$
+    Where the $n=1$ case is 
+    $$3+7e^{-(t^2+t)}cos(x)$$
+    
+\section*{(5)}
+    Find the solution $u=u(x,y)$ to the following Laplace equation problem in the rectangular region $R$ with $0<x<1$ and $0<y<\pi$.
+    $$u_{xx}+u_{yy}=0$$
+    With BCs
+    $$u(x,0)=u(x,\pi)=0$$
+    $$u(0,y)=0$$
+    $$u(1,y)=2sin(y)$$
+    Guess that $u(x,y)=X(x)Y(y)$, which leads to two ODEs
+    $$X''-\lambda X=0$$
+    $$Y''+\lambda Y=0$$
+    Using BCs:
+    $$Y(0)=Y(\pi)=0$$
+    $$X(0)=0$$
+    $$X(1)=2sin(y)$$
+    Solving the $Y$ equation gives
+    $$Y_n(y)=sin(ny) \textrm{ where } \lambda=n^2$$
+    Solving the $X$ equation gives
+    $$X''+n^2X=0$$
+    $$X_n(x)=Asinh(n^2(x))+Bcosh(n^2(x))$$
+    $$X_n(0)=0=B$$
+    Putting these solutions together gives:
+    $$u_n(x,y)=Asin(ny)sinh(n^2(x))$$
+    Using the last initial condition:
+    $$u(x,1)=2sin(y)$$
+    gives by inspection that
+    $$\boxed{u(x,y)=2sin(y)sinh(x)}$$
+    Where $A=2$ and $n=1$.
+    
+\section*{(6)}
+    Use the Fourier Transform to solve the following Integro-differential equation
+    $$\frac{1}{2\pi}\int_R\left(\frac{\partial u}{\partial t}(s,t)+u(s,t)\right)\frac{2}{(x-s)^2+1^2}ds=\frac{(2)(2)}{x^2+2^2}$$
+    and
+    $$u(x,0)=f(x)$$
+    Your solution will depend on the function $f(x)$ (Assume $f(x)\rightarrow{}0$ as $ x\rightarrow{}\pm\infty$.)
+    $$(u_t+u)*\frac{2}{(x-s)^2+1^2}=\frac{(2)(2)}{x^2+2^2}$$
+    where $\alpha=1$ on the left side and $\alpha=2$ on the right side. \newline
+    Applying Fourier Transform to both sides gives:
+    $$2\pi(\hat{u_t}+\hat{u})*e^{-w}=e^{-2w}$$
+    $$\hat{u_t}+\hat{u}=\frac{1}{2\pi}e^{-w}$$
+    with
+    $$\hat{u}{(w,0)}=\hat{f}(w)$$
+    Solving this ODE gives that
+    $$\hat{u}=\frac{1}{2\pi}e^{-w}+Ce^{-t}$$
+    Using IC
+    $$\hat{u}(w,0)=\frac{1}{2\pi}e^{-w}+C=\hat{f}(w) \implies C=\hat{f}(w)-\frac{1}{2\pi}e^{-w}$$
+    $$\hat{u}(w,t)=\frac{1}{2\pi}e^{-w}+(\hat{f}(w)-\frac{1}{2\pi}e^{-w})e^{-t}$$
+    Taking the inverse Fourier transform of $\hat{u}(w,t)$ to get $u(x,t)$ gives
+    $$u(x,t)=\frac{1}{2\pi}\frac{2}{x^2+1}+(f(x)-\frac{1}{2\pi}\frac{2}{x^2+1})e^{-t}$$
+    
+\section*{(7)}
+    Consider the following BVP: Find $u=u(x)$ such that
+    $$u''=f$$
+    with $u'(0)=0$ and $u(1)=0$.  \newline
+    The Green's Function $G_{x_0}=G_{x_0}(x)$ for this problem would satisfy
+    $$\frac{\partial^2G_{x_0}}{\partial x^2}(x)=\delta(x-x_0)$$
+    with $G'_{x_0}(0)=0$ and $G_{x_0}(1)=0$.  Assume $0<x_0<1$
+    \subsection*{(a)}
+        Determine the Green's Function $G_{x_0}$
+        This Green's function will have two solutions depending on the value of x in relation to $x_0$ \newline
+        \indent $x<x_0$ case:
+            $$\frac{d^2G}{dx^2}=0 \implies G'_{x_0}=A \implies G_{x_0}=Ax+B$$
+        \indent Using BCs:
+            $$G'_{x_0}(0)=0 \implies A=0 \implies \boxed{G_{x_0}(x<x_0)=B}$$
+        \indent $x>x_0$ case:
+            $$\frac{d^2G}{dx^2}=0 \implies G'_{x_0}=C \implies G_{x_0}=Cx+D$$
+        \indent Using BCs:
+            $$G_{x_0}(1)=C(1)+D=0 \implies C=-D \implies \boxed{{x_0}(x>x_0)=Cx-C}$$
+        Now need to find values for C and B.  Assume $G_{x_0}$ is continuous at $x_0$
+        $$\implies Cx_0-C=B$$
+        Now have that \newline
+        \indent $x<x_0$ case:
+            $$\boxed{G_{x_0}(x)=Cx_0-C=C(x_0-1)}$$
+        \indent $x>x_0$ case:
+            $$\boxed{G_{x_0}(x)=Cx-C=C(x-1)}$$
+        Need first x derivatives from both left and right of $G_{x_0}$ to equal 1. 
+        $$G'(x>x_0)-G'(x<x_0)=1$$
+        Using this fact to find the value of C:
+        $$G'(x>x_0)=C$$
+        $$G'(x<x_0)=0$$
+        $$G'(x>x_0)-G'(x<x_0)=C-0=C=1$$
+        This then gives
+        \indent $x<x_0$ case:
+            $$\boxed{G_{x_0}(x)=Cx_0-C=x_0-1}$$
+         \indent $x>x_0$ case:
+            $$\boxed{G_{x_0}(x)=Cx-C=x-1}$$    
+
+\section*{(b)}
+    The integral representation for $u(x,t)$ is then
+    $$\int_0^1 f(x)G_{x_0}(x)dx$$ 
+    Where
+        $$G_{x_0}(x<x_0)=x_0-1$$
+    and
+        $$G_{x_0}(x>x_0)=x-1$$
+        
+\end{document}
