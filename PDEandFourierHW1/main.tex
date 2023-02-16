@@ -1,0 +1,184 @@
+\documentclass[preview,12pt]{article}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{ragged2e}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+
+\geometry{letterpaper, margin=1in}
+
+\begin{document}
+
+\noindent PDE and Fourier\newline
+Josh Coffey \newline
+Homework 1 \newline
+1/28/2020 \newline
+
+\section*{Problem 1}
+    \subsection*{(a)}
+        $$x^2y"-4xy'+6y=0$$
+        $$\textrm{Guess } y(x)=x^r:$$
+        $$y'(x)=rx^{(r-1)}$$
+        $$y"(x)=r(r-1)x^{(r-2)}$$
+        $$x^2((r-1)(r)x^{(r-2)})-4x(rx^{(r-1)})+6x^r=0$$
+        $$x^2(r^2-r)\frac{x^r}{x^2}-4x(r)\frac{x^r}{x}+6x^r=0$$
+        $$x^r(r^2-r-4r+6)=x^r(r^2-5r+6)=0$$
+        $$\textrm{solving for r:}$$
+        $$r=\frac{5 \pm{} \sqrt{25-(4)(6)}}{2}=3,2$$
+        $$y(x)=C_1x^{r_1}+C_2x^{r_2}=C_1x^{3}+C_2x^{2}$$
+        $$y(1)=0=C_1(1)^{3}+C_2(1)^{2}=C_1+C_2$$
+        $$C_1=-C_2$$
+        $$y'(x)=3C_1x^2+2C_2x$$
+        $$y'(1)=1=3C_1(1)^2+2C_2(1)$$
+        $$C_1=1$$
+        $$C_2=-1$$
+        $$y(x)=x^3-x^2$$
+    \subsection*{(b)}
+        $$y''+2y'+2y=0; \textrm{  }y(0)=0;\textrm{  } y'(0)=1$$
+        $$\textrm{guess } y(x)=e^{rx}$$
+        $$y'(x)=re^{rx}$$
+        $$y''(x)=r^2e^{rx}$$
+        $$r^2e^{rx}+2re^{rx}+2e^{rx}=0$$
+        $$e^{rx}(r^2+2r+2)=0$$
+        $$\textrm{solving for r: }$$
+        $$r=-1\pm{}i$$
+        $$y(x)=C_1e^{(-1+i)x}+C_2e^{(-1-i)x}=e^{-x}(C_1e^{ix}+C_2e^{-ix})$$
+        $$y(0)=0=e^{0}(C_1e^{0}+C_2e^{0}) \implies C_1=-C_2$$
+        $$y'(x)=-e^{-x}(C_1e^{ix}+C_2e^{-ix})+e^{-x}(iC_1e^{ix}-iC_1e^{-ix})=iC_1e^{-x}(e^{ix}+e^{-ix})$$
+        $$y'(0)=1=iC_1e^{0}(e^{i0}+e^{-i0})=iC_1(2) \implies C_1=\frac{1}{2i} \implies C_2=-\frac{1}{2i}$$
+        $$y(x)=e^{-x}(\frac{1}{2i}e^{ix}-\frac{1}{2i}e^{-ix})$$
+        $$e^{ix}=cos(x)+isin(x)$$
+        $$e^{-ix}=cos(x)-isin(x)$$
+        $$y(x)=e^{-x}(\frac{1}{2i}(cos(x)+isin(x))-\frac{1}{2i}(cos(x)-isin(x)))$$
+        $$y(x)=e^{-x}(-\frac{i}{2}(cos(x)+isin(x))+\frac{i}{2}(cos(x)-isin(x)))$$
+        $$y(x)=e^{-x}sin(x)$$
+    \subsection*{(c)}
+        $$y'+2y=e^x;\textrm{ }y(0)=0$$
+        $$\textrm{solving homogeneous problem:}$$
+        $$\frac{dy}{dx}+2y=0$$
+        $$\frac{dy}{y}=-2dx$$
+        $$\int \frac{dy}{y}=\int -2dx$$
+        $$ln(y)+C_1=-2x+C_2$$
+        $$ln(y)=-2x+C_3$$
+        $$y=e^{-2x}+e^{C_3}=C_4e^{-2x}$$
+        $$y_h=e^{-2x}$$
+        $$\textrm{solving the nonhomogenous problem:}$$
+        $$y'+2y=e^x$$
+        $$uy'+2uy=ue^x$$
+        $$\frac{d}{dx}(uy)=uy'+u'y=uy'+2uy$$
+        $$u'=2u$$
+        $$u=e^{2x}$$
+        $$e^{2x}y'+2ye^{2x}=\frac{d}{dx}(e^{2x}y)=e^{2x}e^x$$
+        $$e^{2x}y=\int e^{3x} dx = \frac{1}{3}e^{3x}+C$$
+        $$y(x)=\frac{1}{3}e^x+Ce^{-2x}$$
+        $$y(0)=0=\frac{1}{3}+C \implies C=-\frac{1}{3}$$
+        $$y(x)=\frac{1}{3}e^x-\frac{1}{3}e^{-2x}=\frac{1}{3}e^x-\frac{1}{3}y_h$$
+    
+    \section*{Problem 2}
+        Consider a thin, one-dimensional rod whose lateral surface area is not insulated and does not have any sources of thermal energy (Q=0)  Assume the heat energy flowing out of the lateral sides per unit surface area per unit time is $w(x,t)$.
+    \subsection*{(a)}
+        Derive a partial differential equation for the temperature $u(x,t)$ that depends on $w(x,t)$ as well.  (\textbf{Hint: }You will need to define P the parameter and A the cross-sectional area of the thin rod.)  \newline The starting point will be an equation of the following form
+        $$A\frac{d}{dt}\int_a^be(x,t)dx=-P\int_a^bw(x,t)dx+... \textrm{ (Interval [$a,b$] is arbitrary). }$$
+        $$A\frac{d}{dt}\int_a^be(x,t)dx=-P\int_a^bw(x,t)dx+(A\phi(a,t)-A\phi(b,t))+0$$
+        let $A=\pi r^2$, where $r$ is the radius of the rod \newline
+        let $P=2d\pi r$, where $d$ is the length of the rod \newline
+        "lateral surface area not insulated" means that heat flows freely \newline
+        $$\pi r^2\frac{d}{dt}\int_a^be(x,t)dx=-2d\pi r \int_a^bw(x,t)dx+\pi r^2(\phi(a,t)-\phi(b,t))$$
+        $$r\frac{d}{dt}\int_a^be(x,t)dx=-2d\int_a^bw(x,t)dx+ r(\phi(a,t)-\phi(b,t))$$
+        $$r\frac{d}{dt}\int_a^be(x,t)dx+2d\int_a^bw(x,t)dx=-r\frac{d}{dx}\int_a^b \phi (x,t) dx$$
+        $$r\frac{d}{dt}\int_a^be(x,t)dx+2d\int_a^bw(x,t)dx+r\frac{d}{dx}\int_a^b \phi (x,t) dx=0$$
+        $$\int_a^b \left( r\frac{\partial e}{\partial t}+2dw(x,t)+r\frac{\partial \phi}{\partial x} \right) dx = 0$$
+        Because points "a" and "b" are arbitrary, can say that
+        $$r\frac{\partial e}{\partial t}+2dw(x,t)+r\frac{\partial \phi}{\partial x}=0$$
+        setting $e=c\rho u$, where $c$ and $\rho$ are constants and $u(x,t)$ represents the temperature:
+        $$cr\rho \frac{\partial u}{\partial t}+2dw+r\frac{\partial \phi}{\parial x}=0$$ 
+        Using Fourier's Law:
+        $$cr\rho \frac{\partial u}{\partial t}+2dw-K_0r\frac{\partial^2u}{\partial x^2}=0$$
+        Rearranging:
+        $$\boxed{-rK_0\frac{\partial^2u}{\partial x^2}+rc\rho \frac{\partial u}{\partial t}=-2dw(x,t)}$$
+
+    \subsection*{(b)}
+        Explain that if we further assume that $w(x,t)$ is proportional to the temperature difference between the rod $u(x,t)$ and the outside temperature $\gamma(x,t)$ (i.e. $w(x,t)=h(x)(u(x,t)-\gamma(x,t))$ then we can derive that
+        $$c\rho\frac{\partial u}{\partial t}=\frac{\partial}{\partial x}\left(K_0\frac{\partial u}{\partial x}\right)-\frac{P}{A}(u-\gamma)h$$
+        where $h(x)$ is a positive $x$-dependent proportionality. \newline
+        $$$$
+        Using the result from part A and resubstituting $A=\pi r^2$ and $P=2\pi r d$:
+        $$-AK_0\frac{\partial^2u}{\partial x^2}+Ac\rho \frac{\partial u}{\partial t}=-Pw(x,t)$$
+        rearranging and substituting the new equation for $w(x,t)$ gives
+        $$c\rho \frac{\partial u}{\partial t}=K_0\frac{\partial^2u}{\partial x^2}-\frac{P}{A}h(x)(u(x,t)-\gamma(x,t))$$
+        Pulling out one of the partial derivatives gives the final result:
+        $$c\rho\frac{\partial u}{\partial t}=\frac{\partial}{\partial x}\left(K_0\frac{\partial u}{\partial x}\right)-\frac{P}{A}(u-\gamma)h$$
+    
+\section*{Problem 3}
+    Determine the equilibrium (steady state) temperature distribution for a 1-D rod with constant thermal properties, source Q=0 (that is u''=0) and boundary conditions
+    $$u(0)=T \textrm{ and } u(L)=0$$
+    Assuming lateral surface area is insulated and the heat equation is 
+    $$c\rho\frac{\partial u}{\partial t}=K_0\frac{\partial^2u}{\partial x^2}+Q$$
+    Q=0:
+    $$c\rho\frac{\partial u}{\partial t}=K_0\frac{\partial^2u}{\partial x^2}$$
+    Steady State case: 
+    $$\frac{\partial u}{\partial t}=\frac{K_0}{c\rho}\frac{\partial^2u}{\partial x^2}=K\frac{\partial^2u}{\partial x^2}$$
+    Know that $\frac{\partial^2u}{\partial x^2}=0$:
+    $$\implies u(x)=C_1x+C_2$$
+    $$u(0)=T=C_1(0)+C_2 \implies C_2=T$$
+    $$u(L)=0=C_1(L)+T \implies C_1=-\frac{T}{L}$$
+    $$u(x)=-\frac{T}{L}x+T$$
+    
+\section*{Problem 4}
+    If both ends of a rod are insulted $\left(\frac{\partial u(0,t)}{\partial x}=0 \textrm{ and } \frac{\partial u(L,t)}{\partial x}=0\right)$, derive \textit{from the partial differential equation} that the total thermal energy $\left(TE(t)=\int_0^Lc\rho u(x,t)dx\right)$ in the rod is constant.  (Again assume no source of heat so $Q=0$)
+    $$$$
+    Starting with insulated lateral surface area and the heat equation:
+    $$c\rho\frac{\partial u}{\partial t}=K_0\frac{\partial^2u}{\partial x^2}+Q$$
+    Q=0:
+    $$c\rho\frac{\partial u}{\partial t}=K_0\frac{\partial^2u}{\partial x^2}$$
+    Integrating both sides w/r/t x:
+    $$\frac{d}{dt}\int_0^L c\rho u \textrm{ } dx = K_0\frac{\partial u}{\partial x}|_0^L$$
+    Expanding the right side of the equation gives:
+    $$K_0\frac{\partial u}{\partial x}|_0^L=K_0\left(\frac{\partial u(L,t)}{\partial x}-\frac{\partial u(0,t)}{\partial x}\right)$$
+    Because both ends of the rod are insulated, 
+    $$K_0\left(\frac{\partial u(L,t)}{\partial x}-\frac{\partial u(0,t)}{\partial x}\right)=0$$
+    So: 
+    $$\frac{d}{dt}\int_0^L c\rho u \textrm{ } dx = 0$$
+    This implies that:
+    $$\int_0^L c\rho u \textrm{ } dx \textrm{ is constant in time}$$
+    
+\section*{Problem 5}
+    Assume the two ends of a uniform rod of length L are insulated and there is a source of thermal energy $Q>0$ but that Q is constant.  Also suppose that the temperature is initially $u(x,0)=f(x)$.
+    \subsection*{(a)}
+        Show mathematically that there does not exist any equilibrium (steady state) temperature distribution.  Briefly explain this physically.
+        $$$$
+        Starting with insulated lateral surface area and the heat equation:
+        $$c\rho\frac{\partial u}{\partial t}=K_0\frac{\partial^2u}{\partial x^2}+Q$$
+        And knowing that the two ends are insulated:
+        $$\left(\frac{\partial u(0,t)}{\partial x}=0 \textrm{ and } \frac{\partial u(L,t)}{\partial x}=0\right)$$
+        The steady state case becomes:
+        $$\frac{\partial u}{\partial t}=\frac{K_0}{c\rho}\frac{\partial^2u}{\partial x^2}+Q=K\frac{\partial^2u}{\partial x^2}+Q$$
+        For the steady state case with insulated boundary conditions:
+        $$0=K\frac{\partial^2u}{\partial x^2}+Q$$
+        $$u_{xx}=-\frac{Q}{K}$$
+        $$u_x=-\frac{Q}{K}x+C_1$$
+        $$u=-\frac{Q}{2K}x^2+C_1x+C_2$$
+        Using insulated boundary conditions:
+        $$u_x(0,t)=0=-\frac{Q}{K}0+C_1 \implies C_1=0$$
+        $$u_x(L,t)=0=-\frac{Q}{K}x \implies L=0$$
+        Because $L\neq0$, no equilibrium temperature distribution exists.\newline
+        To solve for $C_2$, use original PDE
+        $$u_t=ku_{xx}+Q$$
+        Integrate both sides w/r/t x:
+        $$\int_0^Lu_tdx=\int_0^Lku_{xx}+Qdx$$
+        $$\frac{d}{dt}\int_0^Ludx=ku_{x}|_0^L+\int_0^L Q dx$$
+        $$\frac{d}{dt}\int_0^Ludx=QL$$
+        Because $\frac{d}{dt}\int_0^Ludx \neq 0$, the thermal energy is not constant, and because Q and L are both positive constants, the thermal energy in the rod is always increasing.  In addition, due to the fact that the rod is insulated, no energy can leave the rod.  This confirms that there is no equilibrium temperature distribution that can exist. 
+    \subsection*{(b)}
+        Calculate the total thermal energy in the rod (that is, find $TE(t)$ for all $t$)
+        $$$$
+        Using the equation from above:
+        $$\frac{d}{dt}\int_0^Ludx=QL$$
+        Integrating both sides w/r/t time:
+        $$c\rho\int_0^Lu(x,t)dx=\int QL dt=QLt+C$$
+        $$u(x,0)=f(x)=QL(0)+C \implies C=f(x)$$
+        $$c\rho\int_0^Lu(x,t)dx=QLt+f(x)$$
+\end{document}
