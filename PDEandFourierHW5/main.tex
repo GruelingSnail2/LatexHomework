@@ -1,0 +1,105 @@
+\documentclass[preview,12pt]{article}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{ragged2e}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+
+\geometry{letterpaper, margin=1in}
+
+\begin{document}
+
+\noindent PDE and Fourier\newline
+Josh Coffey \newline
+Homework 5 \newline
+4/22/2020 \newline
+
+\section*{(1)}
+    Use the Fourier Transform to solve the following problem:
+    $$u_t+u_x=0 \textrm{ with } u(x,0)=\frac{2}{x^2+1}$$
+    \subsection*{(a)}
+        Find the Fourier Transform of $u$ by applying $F$ to the equation and initial condition; denote this function $U(\omega,t).$
+        $$F=\frac{1}{2\pi}\int_{-\infty}^\infty e^{iwx}f(x)dx$$
+        $$F\{u_t\}+F\{u_x\}=0$$
+        $$\frac{\partial}{\partial t}U(w,t)+iwU(w,t)=0$$
+        This is now a linear, homogeneous ODE. Solving using integrating factor gives that:
+        $$U(w,t)=A(w)e^{-iwt}$$
+        Can calculate $A$ by taking the Fourier Transform of the IC.
+        $$F\{u(x,0)\}=F\{\frac{2}{x^2+1}\}$$
+        $$F\{\frac{2}{x^2+1}\}=\frac{1}{2\pi}\int_{-\infty}^\infty e^{iwx}\frac{2}{x^2+1}dx$$
+        Using the table of inverse and forward Fourier Transforms given in the lectures where $\alpha=1$, 
+        $$F\{\frac{2}{x^2+1}\}=e^{-|w|}$$
+        Using this and plugging $t=0$ into $U(w,t)$ gives that $A(w)=e^{-|w|}$, and the full solution is that
+        $$U(w,t)=e^{-|w|}e^{-iwt}$$
+    \subsection*{(b)}
+        Taking the inverse Fourier Transform of both sides to arrive at the solution of the original PDE gives:
+        $$f(U(w,t))=f(e^{-|w|}e^{-iwt})=f(e^{-|w|-iwt})=f(e^{-|w|(1+it)})$$
+        Using the table where $\alpha=(1+it)$ gives 
+        $$u(x,t)=\frac{2(1+it)}{x^2+(1+it)^2}$$
+        
+\section*{(2)}
+    Use the Fourier Transform to solve the following integro-differential equation:
+    $$\sqrt{\pi}\int_R u_{tt}(s,t)e^{\frac{-(x-s)^2}{4}}ds=\sqrt{\frac{\pi}{3}}e^{\frac{-x^2}{12}}$$
+    with initial conditions
+    $$u(x,0)=0 \textrm{ and } u_t(x,0)=P_a(x)$$
+    Where $P_a(x)=$
+    \[ \begin{cases} 
+      1 & |x|<a \\
+      0 & otherwise \\
+        \end{cases}
+    \]
+    Know that the left side of the integro-differential equation is the convolution of $u_{tt}$ and $e^\frac{-z^2}{4}$ \newline
+    Taking the Fourier Transform of both sides gives:
+    $$F\{(f*g)(w)\}=F\{\sqrt{\pi}\int_R u_{tt}(s,t)e^{\frac{-(x-s)^2}{4}}ds\}=F\{\sqrt{\frac{\pi}{3}}e^{\frac{-x^2}{12}}\}$$
+    Know that taking the Fourier Transform of a convolution gives that:
+    $$2\pi F\{f(w)\}F\{g(w)\}=2\pi F\{u_{tt}\} F\{\sqrt{\pi}e^{\frac{-(x-s)^2}{4}}\}=F\{\sqrt{\frac{\pi}{3}}e^{\frac{-x^2}{12}}\}$$
+    Know from table that
+    $$F\{u_{tt}\}=\frac{\partial^2 }{\partial t^2}U(w,t)$$
+    $$F\{\sqrt{\pi}e^{\frac{-(x-s)^2}{4}}\}=e^{-w^2}$$
+    $$F\{\sqrt{\frac{\pi}{3}}e^{\frac{-x^2}{12}}\}=e^{-3w^2}$$
+    This gives the following equation:
+    $$2\pi\frac{d^2U}{dt^2}e^{-w^2}=e^{-3w^2}$$
+    $$\frac{d^2U}{dt^2}(w,t)=e^{-3w^2+w^2}=\frac{1}{2\pi}e^{-2w^2}$$
+    Solving this ODE gives:
+    $$y_h=0$$
+    Guessing that $y_p=P_a(x)t$ gives that 
+    $$U(w,t)=P_a(w)t$$
+    Now take the inverse Fourier Transform to get
+    $$u(x,t)=P_a(x)t$$
+    
+\section*{(3)}
+    Consider the one-dimensional Schrodinger Problem:
+    $$u_t=iu_{xx} \textrm{ with } u(x,0)=f(x)$$
+    Where both $f$ and $u$ tend to 0 as $x->\pm \infty$
+    \subsection*{(a)}
+        Find the Fourier Transform in x of $u$ by applying $F$ to the equation and initial condition.  Denote this function $U=U(w,t).$
+        $$F\{u_t\}=F\{iu_{xx}\}$$
+        $$\frac{\partial U}{\partial t}=i(-iw)^2U=iw^2U$$
+        Taking the Fourier Transform of the initial condition gives
+        $$F\{u(x,0)\}=F\{f(x)\}$$
+        $$U(w,0)=F\{f(w)\}$$
+        Solving the new ODE for $U(w,t)$ 
+        $$\frac{U'}{U}=iw^2$$
+        $$\frac{dU}{U}=iw^2dt$$
+        $$ln(U)=iw^2t+C$$
+        $$U=Ae^{iw^2t}$$
+        Using IC's:
+        $$U(w,t)=F\{f(w)\}e^{iw^2t}$$
+    \subsection*{(b)}
+        Plancheral's Identity states
+        $$\int_{-\infty}^\infty |g(x)|^2dx=2\pi\int_{-\infty}^\infty|G(w)|^2dw$$
+        Show that 
+        $$\int_{-\infty}^\infty |u(x,t)|^2dx=\int_{-\infty}^\infty|f(x)|^2dx$$
+        Begin by taking the inverse Fourier Transform of $U(w,t)$
+        $$F^{-1}\{U(w,t)\}=F^{-1}\{F\{f(w)\}e^{iw^2t}\}$$
+        $$u(x,t)=f(x)F^{-1}\{e^{iw^2t}\}$$
+        $$\int_{-\infty}^\infty|u(x,t)|^2dx=\int_{-\infty}^\infty|f(x)F^{-1}\{e^{iw^2t}\}|^2dx$$
+        Using Plancheral's Identity:
+        $$\int_{-\infty}^\infty |F^{-1}\{e^{iw^2t}\}|^2 dx=2\pi\int_{-\infty}^\infty |e^{iw^2t}|^2dw$$
+        This integration results in the erf function which is equal to 1 at $\pm\infty$
+        Thus 
+        $$\int_{-\infty}^\infty |u(x,t)|^2dx=\int_{-\infty}^\infty|f(x)|^2dx$$
+\end{document}
