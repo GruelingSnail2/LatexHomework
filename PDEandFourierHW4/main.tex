@@ -1,0 +1,118 @@
+\documentclass[preview,12pt]{article}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{ragged2e}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+
+\geometry{letterpaper, margin=1in}
+
+\begin{document}
+
+\noindent PDE and Fourier\newline
+Josh Coffey \newline
+Homework 4 \newline
+4/13/2020 \newline
+
+\section*{(1)}
+
+    \subsection*{(a)}
+        Show that L with associated BCs is self adjoint. \newline
+        Want to show that for this $L$,
+        $$\int_a^b uL(v)dx=\int_a^b vL(u)dx$$
+        In this problem,
+        $$p=r$$
+        $$\sigma=r$$
+        $$q=0$$
+        $$\phi=\phi$$
+        $$L=L$$
+        and BCs
+        $$\lim_{r->0}(r\phi '(r))=\phi(a)=0$$
+        Using Green's Theorem:
+        $$\int_0^a (uL(v)-vL(u))dr=(puv'-pvu')|_0^a=(ruv'-rvu')|_0^a$$
+        from BCs:
+        $$u(a)=v(a)=0$$
+        $$\lim_{r->0}(rv '(r))=\lim_{r->0}(ru '(r))=0$$
+        Thus the right side of Green's Theorem for this problem is 0.
+        $$\implies \int_0^a uL(v)dr=\int_0^avL(u)dr$$
+        and so the operator L with the asociated BCs is self-adjoint.
+        
+    \subsection*{(b)}
+        Show that for any eigenfunction-eigenvalue solution pair $\phi_n$ and $\lambda_n$ the eigenvalue $\lambda_n$ is nonnegative. \newline
+        Using the theorem: If $p\geq 0$, $q\leq 0$, $\sigma \geq 0$ and $p\phi\phi '|_a^b=0$
+        then we have that $\lambda \geq 0$. \newline
+        In this case, $p=r$, $q=0$, and $\sigma = r$ and $0<r<a$ where 0=a and a=b so these conditions are met.  \newline
+        Know from the BCs that $\phi(a)=0$ so the upper bound is 0. \newline
+        Also know from the BCs that $\lim_{r->0}(r\phi ' (r)=0$ and since the lower bound is 0 then $p\phi ' =0$ so both bunds are 0. \newline
+        Thus the eigenvalue for any eigenfunction-eigenvalue solution pair is nonnegative. 
+        
+    \subsection*{(c)}
+        Explain why distinct eigenfunctions are orthogonal in the inner product
+        $$(w,z)=\int_0^a rw(r)z(r)dr$$
+        That is
+        $$\int_0^arJ_2(\sqrt{\lambda_i}r)J_2(\sqrt{\lambda_j}r)dr=0 \textrm{ if } i\neq j$$
+        Know that $\sigma(r)=r$ and that $0<r<a$ or that $\sigma(r)>0$. \newline
+        Also know that for two distinct eigenfunctions, the corresponding eigenvalues are not equal.  Otherwise, the above integral would be undefined. \newline
+        From this information and the self-adjoint property, can conclude that distinct eigenfunctions are orthogonal in the inner product as shown in the slides. 
+    
+    \subsection*{(d)}
+        find a formula for $c_n$ such that
+        $$f(r)\approx \Sigma_{n=1}^\infty c_n J_2(\sqrt{\lambda_n}r).$$
+        from above, know that
+        $$(w,z)=\int_0^a rw(r)z(r)dr \implies \int_0^arJ_2(\sqrt{\lambda_i}r)J_2(\sqrt{\lambda_j}r)dr=0 \textrm{ if } i\neq j$$
+        then computing $c_n$ i.e. the Fourier Coefficients for the desired approximation is done using the formula
+        $$c_n=\frac{\int_0^a rJ_2(\sqrt{\lambda_n}r)f(r)dr}{\int_0^a rJ_2(\sqrt{\lambda_n})^2dr}$$ as shown in the slides.
+    
+\section*{(2)}
+    $$\frac{d^2\phi}{dx^2}+\alpha\frac{d\phi}{dx}+(\lambda \beta+ \gamma)\phi=0$$
+    Standard Sturm-Liouville form:
+    $$(p\phi')'+q\phi+\lambda\sigma\phi = 0$$
+    Multiplying by $H=H(x)$ gives that
+    $$H\phi ''+H\alpha \phi '+H(\lambda\beta+\gamma)\phi=0$$
+    rearranging gives
+    $$H\phi ''+H\alpha \phi'=-(\lambda H \beta +\gamma H)\phi=-\lambda H \beta \phi - \gamma H \phi$$
+    $$H\phi ''+H\alpha \phi'+\lambda H \beta \phi=- \gamma H \phi$$
+    Let $H\alpha=H'$ 
+    $$H\phi ''+H' \phi'+\lambda H \beta \phi+\gamma H \phi=0$$
+    Rewriting the first two terms using the product rule
+    $$(H\phi')'+\lambda H \beta \phi+\gamma H\phi=0$$
+    This is now in standard Sturm-Liouville form where
+    $$H=p$$
+    $$H\beta=\sigma$$
+    $$\gamma H=q$$
+    and where $H$ is chosen so that $H\alpha=H'$.
+    
+\section*{(3)}
+    suppose u=u(x,t) is a solution of the wave equation
+    $$\frac{\partial^2u}{\partial t^2}-\frac{\partial^2u}{\partial x^2}=0$$
+    which also satisfies $u(0,t)=0$ and $u_x(1,t)+u_t(1,t)=0$.  Show that the energy
+    $$E(t)=\frac{1}{2}\int_0^1(u_t^2+u_x^2)dx$$
+    is decreasing in time.
+    Multiplying the PDE by $u_t$ and integrating in x gives
+    $$\int_0^1 u_t(u_{tt}-u_{xx}) dx =0$$
+    $$\implies \int_0^1u_tu_{tt}dt+(\int_0^1 u_{xt}u_x dx-u_xu_t|_0^1)=0$$
+    Using the product rule gives that 
+    $$\frac{1}{2}\int_0^1 (u_t^2+u_x^2) dx-u_xu_t|_0^1=0$$
+    Rewriting to get the energy on one side:
+    $$\frac{1}{2}\int_0^1 (u_t^2+u_x^2) dx=u_xu_t|_0^1=u_x(1,t)u_t(1,t)-u_x(0,t)u_t(0,t)=u_x(1,t)u_t(1,t)=-(u_t(1,t))^2$$
+    The last step from above comes from the boundary condition $u_x(1,t)+u_t(1,t)=0$. \newline
+    Can see that differentiating both sides of the above equation with respect to t will result in 
+    $$E'(t)=-2(u_t(1,t))\frac{d}{dt}(u_t(1,t))$$
+    Because the right side is negative, the energy will be decreasing in time.
+    
+\section*{(4)}
+    $$ \frac{\partial u}{\partial t}+2u\frac{\partial u}{\partial x}+\frac{\partial^3u}{\partial x^3}=0$$
+    $$u=u_x=u_{xx}=0 \textrm{ as } x->\pm\infty$$
+    Show that energy $E(t)=\int_{-\infty}^\infty u^2(x,t)dx$ is conserved $(E'(t)=0)$. \newline
+    Begin by multiplying PDE by u and integrating w/r/t x.
+    $$ \int_{-\infty}^\infty u(u_t+2uu_x+u_{xxx})dx=0$$
+    $$ \int_{-\infty}^\infty uu_t dx+ \int_{-\infty}^\infty 2u^2u_x dx + \int_{-\infty}^\infty uu_{xxx}dx=0$$
+    Pulling the $\frac{d}{dt}$ out of the first integral gives
+    $$\frac{d}{dt}\int_{-\infty}^\infty u^2 dx+ \int_{-\infty}^\infty 2u^2u_x dx + \int_{-\infty}^\infty uu_{xxx}dx=0$$
+    Know that $u_x=u=u_{xx}=0$ at the bounds of the integrals, so have that:
+    $$\frac{d}{dt}\int_{-\infty}^\infty u^2 dx=E'(t)=0$$ 
+    And so energy is conserved. 
+\end{document}
