@@ -1,0 +1,179 @@
+\documentclass[preview,12pt]{article}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{ragged2e}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+
+\geometry{letterpaper, margin=1in}
+
+\begin{document}
+$$$$
+Combustion HW 4 \newline
+Josh Coffey \newline
+December 2019 \newline
+
+\begin{center}
+    \section*{Problem 1}
+\end{center}
+1. Define the Lewis number, $Le$, and discuss its physical significance.  What role does the assumption that the Lewis number is unity play in simplifying the concervation of energy equation?
+$$$$
+The lewis number is defined as the ratio of the thermal diffusivity to the mass diffusivity.
+$$Le=\frac{\alpha}{D}=\frac{k}{\rho c_p D}$$
+When it is assumed that the lewis number is 1, or $\alpha = D$, then the heat flux equation goes from 
+$$\dot{Q}^"_x=-\rho\alpha c_p\frac{dT}{dx}-\rho D \frac{dh}{dx}+\rho D c_p\frac{dT}{dx}$$
+to merely
+$$\dot{Q}^"_x=-\rho D \frac{dh}{dx}$$
+In this case, the first term that describes the flux of sensible enthalpy due to conduction becomes the same as the last term that describes the flux of sensible enthalpy due to species diffusion and so they cancel each other out.  This simplification can then be used in the simplified expression of the steady state first law of thermodynamics assuming no work done by the control volume and no change in potential energy. 
+$$-\frac{d\dot{Q}^"_x}{dx}=\dot{m}^"\left(\frac{dh}{dx}+v_s\frac{dv_x}{dx}\right)$$
+By simplifying this expression, the resulting equation tells us that the sum of the rates of advection and thermal energy is equal to the rate at which chemical energy is converted to thermal energy by a chemical reaction. 
+$$\dot{m}^"\frac{d\int c_p dT}{dx}+\frac{d}{dx}\left[-\rho D \frac{d\int c_p dT}{dx}\right]=-\Sigma h^0_{f,i}\dot{m}^{'''}_i$$
+\newpage
+\begin{center}
+    \section*{Problem 2}
+\end{center}
+2. Consider the combustion of propane with air giving products CO, CO2, H2O, H2, O2, and N2.  Define the mixture fraction in terms of the various product species mole fractions, $\chi_i$.
+$$$$
+$$f=\frac{\textrm{Mass of material having its origin in the fuel stream}}{\textrm{Mass of mixture}}$$
+Assume fuel stream is only carbon and hydrogen (C and H2).  C is found in CO and CO2 and C3H8 and H2 is found in H2O, H2, and C3H8.
+$$f=\frac{[m_C+m_H]_{mix}}{m_{mix}}$$
+$$f={Y_{C_3H_8}\frac{3MW_C}{MW_{C_3H_8}}+Y_{CO}}{\frac{1MW_C}{MW_{CO}}+Y_{CO_2}\frac{1MW_C}{MW_{CO_2}}}$$
+$$+Y_{C_3H_8}\frac{4MW_H_2}{MW_{C_3H_8}}+Y_{H_2}\frac{1MW_{H_2}}{MW_{H_2}}+Y_{H_2O}\frac{1MW_{H_2}}{MW_{H_2O}}$$
+Using $\chi_i\frac{MW_i}{MW_{mix}}=Y_i$ in the above equation gives
+$$f=\chi_{C_3H_8}\frac{MW_{C_3H_8}}{MW_{mix}}\frac{3MW_C}{MW_{C_3H_8}}+\chi_{CO}\frac{MW_{CO}}{MW_{mix}}\frac{1MW_C}{MW_{CO}}+\chi_{CO_2}\frac{MW_{CO_2}}{MW_{mix}}\frac{1MW_C}{MW_{CO_2}}$$
+$$+\chi_{C_3H_8}\frac{MW_{C_3H_8}}{MW_{mix}}\frac{4MW_H_2}{MW_{C_3H_8}}+\chi_{H_2}\frac{MW_{H_2}}{MW_{mix}}\frac{1MW_{H_2}}{MW_{H_2}}+\chi_{H_2O}\frac{MW_{H_2O}}{MW_{mix}}\frac{1MW_{H_2}}{MW_{H_2O}}$$
+Simplifying gives:
+$$\frac{(3\chi_{C_3H_8}+1\chi_{CO}+1\chi_{CO_2})MW_C+(4\chi_{C_3H_8}+1\chi_{H_2}+1\chi_{H_2O})MW_{H_2}}{MW_{mix}}$$
+$$$$
+\begin{center}
+    \section*{Problem 3}
+\end{center}
+3. Consider the heat flux for a one-dimensional reacting flow:
+$$\dot{Q}^{''}_x=\dot{Q}^{''}_{cond}+\dot{Q}^{''}_{species \textrm{ } diff}$$
+Express the right-hand-side of the heat flux expression in terms of the temperature and appropriate mass fluxes.  Using this result, show that $\dot{Q}^{''}_x$ simplifies to 
+$$\dot{Q}^{''}_x=\rho D c_p(1-Le)\frac{dT}{dx}-\rho D\frac{dh}{dx}$$
+subject to the assumption that a single binary diffusivity, $D$, characterizes the mixture. 
+$$$$
+$$\dot{Q}^{''}_x=-k\frac{dT}{dx}+\Sigma\dot{m}^{''}_{i,diff}h_i$$
+Know that 
+$$\dot{m}^{''}_{i,diff}=-\rho D \frac{dY_i}{dx}$$
+So
+$$\dot{Q}^{''}_x=-k\frac{dT}{dx}-\Sigma\rho D \frac{dY_i}{dx}h_i$$
+differentiating $\frac{dY_i}{dx}h_i$ gives
+$$\dot{Q}^{''}_x=-k\frac{dT}{dx}-\rho D\frac{dh}{dx}- \rho D\Sigma Y_i\frac{dh_i}{dx}$$
+Using fact that
+$$h_i=h^{\degree}_{fi}=\int c_{pi}dT$$
+$$\dot{Q}^{''}_x=-k\frac{dT}{dx}-\rho D\frac{dh}{dx}+ \rho D\Sigma Y_ic_{pi}\frac{dT}{dx}$$
+Know that $c_p=\Sigma Y_ic_{pi}$ and $Le=\frac{\alpha}{D}=\frac{k}{\rho c_p D}$
+$$\dot{Q}^{''}_x=\rho D c_p(1-Le)\frac{dT}{dx}-\rho D\frac{dh}{dx}$$
+$$$$
+
+\begin{center}
+    \section*{Problem 4}
+\end{center}
+4. Consider a jet diffusion flame in which the fuel is methanol (CH3OH) and the oxidizer is air. The species existing within the flame are CH3OH, CO, CO2, O2, H2, H2O, N2, and OH. \newline
+\indent A. Determine the numerical value of the stoichiometric mixture fraction.\newline
+\indent B. Write out an expression for the mixture fraction, $f$, in terms of the flame-species mass fractions, $Υ_i$ Assume all pairs of binary diffusion coefficients are equal, i.e., no differential diffusion.
+$$$$
+To determine the stoichiometric mixture fraction, calculate the fuel mass fraction $Y_{C_3H_8}$ in a reactants mixture of stoichiometric proportions. 
+$$CH_3OH+a(O_2+3.76N_2)->bCO_2+cH_2O+3.76aN_2$$
+Using atom conservation gives:\newline
+\indent H: 4=2c \newline
+\indent C: 1=b \newline
+\indent O: 1+2a=2b+c \newline
+\indent N: 3.76a=3.76a \newline
+This gives that: \newline
+\indent a=$\frac{3}{2}$, b=1, c=2\newline
+Then, \newline
+$$f_{stoic}=Y_F=\frac{MW_{CH_3OH}}{MW_{CH_3OH}+\frac{3}{2}(MW_{O_2}+3.76N_2)}$$
+$$f_{stoic}=\frac{32.042}{32.042+1.5(31.998+(3.76)(28.014))}=0.1346$$
+To find the mixture fraction in terms of the flame-species mass fractions,  note that all C atoms originate in the fuel, all N atoms originate in the oxidizer, all H atoms originate in the fuel, but not all O atoms originate in the fuel.  Because the only source of elemental H within the flame is CH3OH, can determine the local mixture fraction knowing that it must be proportional to the local elemental H mass fraction.
+$$f=\left(\frac{\textrm{mass of fuel}}{\textrm{mass of H}}\right)\left(\frac{\textrm{mass of H}}{\textrm{mass of mixture}}\right)=\frac{32.042}{4(1.008)}Y_H=7.9469Y_H$$
+Know $Y_H$ is the weighted sum of th emass fractions of species containing hydrogen:
+$$Y_H=\frac{4(1.008)}{32.042}Y_{CH_3OH}+Y_{H_2}+\frac{2(1.008)}{18.015}Y_{H_2O}+\frac{1.008}{17.008}Y_{OH}$$
+Using these two equations gives the mixture fraction expression of:
+$$f=Y_{CH_3OH}+7.9469Y_{H_2}+0.8893Y_{H_2O}+0.4710Y_{OH}$$
+$$$$
+
+\begin{center}
+    \section*{Problem 6}
+\end{center}
+6. Distinguish between deflagration and detonation.\newline
+
+Deflagration is when a discrete combustion wave propagates at subsonic velocity and detonation is when the flame propagates at supersonic velocity.
+$$$$
+\begin{center}
+    \section*{Problem 7}
+\end{center}
+7. Consider the outward propagation of a spherical laminar flame into an infinite medium of unburned gas.  Assuming that $S_L$, $T_u$, and $T_b$ are all constants, determine an expression for the radial velocity of the flame front for a fixed coordinate system with its origin at the center of the sphere.\newline
+
+Create a control volume surrounding the burned area and assume it is a perfect sphere.
+By conservation of mass:
+$$\dot{m}_{in}=\rho_uS_LA_f$$
+$$A_f=4\pi r_f^2$$
+Know that
+$$m_b=\rho_b\frac{4}{3}\pi r_f^3$$
+Where u denotes infinite medium of unburned gas and b denotes the quantities that has been burned.
+$$\frac{dm_b}{dt}=\dot{m}_{in}$$
+note that there is no mass flow being removed from the control volume. Can combine the above equations to get
+$$\frac{d}{dt}(\rho_b\frac{4}{3}\pi r_f^3)=\rho_uS_L4\pi r_f^2$$
+Only $r_f$ changes with time:
+$$\rho_b\frac{4}{3}\pi \frac{dr_f^3}{dt}=\rho_uS_L4\pi r_f^2$$
+$$\rho_b\frac{4}{3}\pi 3r_f^2\frac{dr_f}{dt}=\rho_uS_L4\pi r_f^2$$
+Simplifying gives that:
+$$\frac{dr_f}{dt}=\frac{\rho_u}{\rho_b}S_L$$
+$$$$
+
+\begin{center}
+    \section*{Problem 8}
+\end{center}
+Consider a one-dimensional, adiabatic, laminar, flat flame stabilized on a burner such as in the below figure.  The fuel is butane (C4H10) and the mixture ration is stoichiometric ($\phi$=1).  Determine the velocity of the unburned gases for the operation at atmospheric pressure and an unburned gas temperature of 300K. 
+\newline
+$$C_4H_{10}+a(O_2+3.76N_2)->xCO_2+(y/2)H_2O+3.76aN_2$$
+$$C_4H_{10}+6.5(O_2+3.76N_2)->4CO_2+5H_2O+24.44N_2$$
+Know that $S_L=v_u sin(\alpha)$
+$$S_L=\left[-2\alpha(v+1)\frac{\Bar{\dot{m}}^{'''}_F}{\rho_u}\right]^{1/2}$$
+To get $\Bar{\dot{m}}^{'''}_F$
+$$\Bar{T}=\frac{1}{2}(\frac{1}{2}(T_b+T_u))+T_b)$$
+Know that $T_u=$300K and assume $T_b=T_{adiabatic}$.  Calculate the constant pressure adiabatic flame temperature.   From stoichiometric equation above:
+$$N_{CO_2}=4$$
+$$N_{H_2}=5$$
+$$N_{N_2}=24.44$$
+Properties of species using appendices:
+$$\Bar{h}_{f,C_4H_{10}}^\degree = -124,733 kJ/mol$$
+$$\Bar{h}_{f,CO_2}^\degree = -393546$$
+$$\Bar{h}_{f,H_2O}^\degree = -241845$$
+$$\Bar{h}_{f,N_2,O_2}^\degree = 0$$
+$$H_{reac}=-124,733 kJ/mol$$
+$$H_{prod}=4(-393546+56.21(T_{ad}-298)))+5(-241845+43.87(T_{ad}-298)))+24.44(0+33.71(T_{ad}-298)))$$
+$$H_{prod}=-2783409+224.84(T_{ad}-298)+-1209225+219.35(T_{ad}-298)+823.8724(T_{ad}-298)$$
+$$H_{prod}=-3992634+1268.0624(T_{ad}-298)$$
+$$H_{prod}=H_{reac}$$
+$$-3992634+1268.0624(T_{ad}-298)=-124,733$$
+$$T_{ad}=3348.25$$
+$$\Bar{T}=\frac{1}{2}(\frac{1}{2}(3348.25+300))+3348.25)=2586.1875$$
+Assuming no fuel or oxygen in the burned gas:
+$$\Bar{Y}_F=\frac{Y_{F,u}}{2}\frac{1}{2}\left(\frac{MW_{C_4H_{10}}}{MW_{C_4H_{10}}+6.5MW_{O_2}+24.44MW_{N_2}}=\frac{58.124}{950.77316}\right)=\frac{0.0611}{2}=0.0306$$
+$$\Bar{Y}_{O_2}=\frac{1}{2}(Y_{O_2}(1-Y_{F,u}))=\frac{0.2054}{2}=0.1027$$
+Reaction rate is given by:
+$$\dot{\omega}_F=\frac{d[C_4H_{10}]}{dt}=-k_G[C_4H_{10}]^1[O_2]^{6.5}$$
+where 
+$$k_G=3.658\cdot 10^9exp\left(\frac{-24584}{2586.1875}\right)=272201.4672$$
+$$\Bar{\dot{\omega}}_F=-k_G\rho^{-1.75}\left(\frac{Y_F}{MW_F}\right)\left(\frac{Y_{O_2}}{MW_O_2}\right)^=5.296\cdot 10^{-16}$$
+$$\Bar{\rho}=\frac{P}{TR_u/MW}=0.1366$$
+Using these values, can calculate $\Bar{\dot{m}}^{'''}_F$ and $\alpha=\frac{k(\Bar{T})}{\rho_u c_p(\Bar{T})}$.
+$$\Bar{\dot{m}}^{'''}_F=\Bar{\dot{\omega}}_FMW_F=3.078\cdot 10^{-14}$$
+$$\alpha=\frac{k(\Bar{T})}{\rho_u c_p(\Bar{T})}=6.31\cdot10^{-5}$$
+Then, use 
+$$S_L=\left[-2\alpha(v+1)\frac{\Bar{\dot{m}}^{'''}_F}{\rho_u}\right]^{1/2}=5.729\cdot10^{-9}$$
+to get the laminar flame speed. \newline
+Then, knowing that the flame is flat $(\alpha=90\degree)$, can use equation
+$$S_L=sin (\alpha) v_u$$
+$$v_u=\frac{S_L}{sin(\alpha)}=S)=S_L=5.729\cdot10^{-9}\frac{m}{s}$$
+
+
+
+\end{document}
