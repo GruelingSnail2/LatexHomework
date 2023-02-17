@@ -1,0 +1,79 @@
+\documentclass[preview,12pt]{article}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{ragged2e}
+\begin{document}
+\noindent
+
+\title{AEEM 8030-HW 4}
+\author{Josh Coffey}
+\date{10/28/2019}
+\maketitle
+
+\section{6.4}
+A J-57B afterburning turbojet engine at maximum static power on a sea-level, standard day ($P_0=14.696$ psia, $T_0$=518.7$\degree$R, and $V_0$=0) has the data listed in Appendix B.
+
+a) Calculate the adiabatic and polytropic efficiencies of the low pressure and high pressure compressors.  Assume $\gamma$=1.4 for the low pressure compressor and $\gamma$=1.39 for the high pressure compressor.
+
+b) Calculate the adiabatic and polytropic efficiencis of the turbine.  Assume $\gamma$=1.33.
+
+c) Calculate $\pi_b, \tau_b, \pi_{AB}, \tau_{AB}$.
+
+	\subsection{Solution}
+	a)
+	
+	Know:
+	J-57B compressor has 16 stages (from Appendix B) and 
+	$$e_{c_{polytropic}}=\frac{dT_i}{dT_t}=\frac{\gamma-1}{\gamma}\frac{dP_t}{dP}=\frac{\gamma-1}{\gamma}\frac{ln(\pi_c)}{ln(\tau_c)}$$
+	$$\eta_{c_{adiabatic}}=\frac{\pi_c^\frac{(\gamma-1)}{\gamma}-1}{\pi_c^\frac{\gamma-1}{\gamma\eta_s}-1}$$
+	$$\eta_s=\frac{\pi_s^\frac{\gamma-1}{\gamma}-1}{\tau_c-1}$$
+	
+	Solve:
+	$$\eta_{s_{LP}}=\frac{\frac{P_{t2.5}}{P_{t2}}^\frac{.4}{1.4}-1}{\frac{T_{t2.5}}{T_{2}}-1}=0.8618$$
+	$$\eta_{C_{LP}}=\frac{\frac{P_{t2.5}}{P_{t2}}^\frac{(\gamma-1)}{\gamma}-1}{\frac{P_{t2.5}}{P_{t2}}^\frac{\gamma-1}{\gamma\eta_s}-1}=\boxed{0.8367}$$
+	$$e_{LPc}=\frac{.4}{1.4}\frac{ln\frac{54}{14.7}}{ln{\frac{330}{59}}}=\boxed{0.2159}$$
+	$$\eta_{s_{HP}}=\frac{\frac{P_{t3}}{P_{t2.5}}^\frac{.39}{1.39}-1}{\frac{T_{t3}}{T_{2.5}}-1}=0.3727$$
+	$$\eta_{c_{HP}}=\frac{\frac{P_{t3}}{P_{t2.5}}^\frac{(\gamma-1)}{\gamma}-1}{\frac{P_{t3}}{P_{t2.5}}^\frac{\gamma-1}{\gamma\eta_s}-1}=\boxed{0.2885}$$
+	$$e_{HPc}=\frac{.39}{1.39}\frac{ln\frac{167}{54}}{ln{\frac{660}{330}}}=\boxed{0.4570}$$
+	
+	
+	b)
+	
+	Know: 
+	$$\eta_t=\frac{1-\tau_t}{1-\pi^\frac{\gamma-1}{\gamma}}=\frac{1-\tau_t}{1-\tau_t^{\frac{1}{e_t}}}$$
+	$$e_t=\frac{\gamma}{\gamma-1}\frac{ln(\tau_t)}{ln(\pi_t)}$$
+	
+	Solve:
+	$$e_t=\frac{1-\frac{T_{t5}}{T_{t4}}}{1-\frac{P_{t5}}{P_{t4}}}^\frac{\gamma-1}{\gamma}=\frac{1-\frac{1013}{1570}}{1-\frac{36}{158}}^\frac{1.33-1}{1.33}=\boxed{0.1334}$$
+	$$\eta_t=\frac{1-\frac{T_{t5}}{T_{t4}}}{1-\frac{T_{t5}}{T_{t4}}}^{\frac{1}{e_t}}=\frac{1-\frac{1013}{1570}}{1-\frac{1013}{1570}}^{\frac{1}{.1334}}=\boxed{0.3686}$$
+	
+	c)
+	$$\pi_b=\frac{P_{t4}}{P_{t3}}=\frac{158}{167}=0.9461$$
+	$$\tau_b=\frac{T_{t4}}{T_{t3}}=\frac{1570}{660}=2.3788$$
+	$$\pi_{AB}=\frac{P_{t7}}{P_{t6}}=\frac{31.9}{36}=0.8861$$
+	$$\tau_{AB}=\frac{T_{t7}}{T_{t6}}=\frac{2540}{1013}=2.5074$$
+	\linebreak
+
+\section{6.9}
+Repeat Problem 6.4 with variable gas properties, using Appendix D or program AFPROP.  Compare your results to those of Problem 6.4
+
+    \subsection{Solution}
+    a)
+    
+    Using AFPROP, get a new value for $\sigma$ of approximately 1.4.  Plugging that into efficiency equations gives:
+    $$\eta_{C_{LP}}=\frac{\frac{P_{t2.5}}{P_{t2}}^\frac{(\gamma-1)}{\gamma}-1}{\frac{P_{t2.5}}{P_{t2}}^\frac{\gamma-1}{\gamma\eta_s}-1}=\boxed{0.8367}$$
+    $$e_{LPc}=\frac{.4}{1.4}\frac{ln\frac{54}{14.7}}{ln{\frac{330}{59}}}=\boxed{0.2159}$$
+    
+    b)
+    Using AFPROP, get $\gamma$ equal to 1.33.
+    $$e_t=\frac{1-\frac{T_{t5}}{T_{t4}}}{1-\frac{P_{t5}}{P_{t4}}}^\frac{\gamma-1}{\gamma}=\frac{1-\frac{1013}{1570}}{1-\frac{36}{158}}^\frac{1.33-1}{1.33}=\boxed{0.1334}$$
+	$$\eta_t=\frac{1-\frac{T_{t5}}{T_{t4}}}{1-\frac{T_{t5}}{T_{t4}}}^{\frac{1}{e_t}}=\frac{1-\frac{1013}{1570}}{1-\frac{1013}{1570}}^{\frac{1}{.1334}}=\boxed{0.3686}$$
+	
+	c) 
+	These values don't change with a varying $\gamma$
+	$$\pi_b=\frac{P_{t4}}{P_{t3}}=\frac{158}{167}=0.9461$$
+	$$\tau_b=\frac{T_{t4}}{T_{t3}}=\frac{1570}{660}=2.3788$$
+	$$\pi_{AB}=\frac{P_{t7}}{P_{t6}}=\frac{31.9}{36}=0.8861$$
+	$$\tau_{AB}=\frac{T_{t7}}{T_{t6}}=\frac{2540}{1013}=2.5074$$
+    
+\end{document}
