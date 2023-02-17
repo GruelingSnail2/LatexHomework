@@ -1,0 +1,136 @@
+\documentclass{article}
+
+\documentclass[preview,12pt]{article}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{ragged2e}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+
+\geometry{letterpaper, margin=1in}
+
+\begin{document}
+
+\begin{center}
+    \section*{Homework 3}
+    \section*{Josh Coffey}
+    \section*{11/21/19}
+\end{center}
+
+$$$$
+
+\section*{Problem 1}
+Identify and discuss the processes involved in the H2-O2 system that result in: \newline
+
+\subsection*{A. The first explosion limit}
+\indent Before the first explision limit, there is no explosion.  This is due to the free radicals produced in the initiation step at temperatures other than "very high temperatures" and in the chain sequence being destroyed by reactions on the walls of the vessel that the H2-O2 is contained in.  These wall reactions break the chain sequences which prevents new radicals from being produced.  Because it is these radicals that result in an explosion, no explosion takes place.\newline
+
+\subsection*{B. The second explosion limit}
+\indent After the first explosion limit but before the second explosion limit, the gas-phase chain-reaction steps overpower the effects of chain sequences being destroyed by reactions on the walls.  In other words, more radicals are produced in the vessel than are destroyed.  This leads to an explosion. \newline
+
+\subsection*{C. The third explosion limit}
+\indent After the second explosion limit but before the third explosion limit, there is no explosion.  This is because any H atoms that exist are split between the chain-branching reaction and a reaction that forms a hydroperoxy radical which is unreactive at low temperatures.  Because it is unreactive, it can spread out to the wall of the vessel where it is destroyed by the wall reactions.  Because the net number of radicals being reduced before this limit, there is no explosion. \newline
+\indent After the third explosion limit, there is a reaction that adds a chain-branching step, which opens up the H2O2 chain sequence, which causes explosions. 
+
+\section*{Problem 2}
+\textbf{Why is moisture, or other H2-containing species, important for the rapid oxidation of CO?} \newline
+\indent Carbon monoxide is slow to oxidize without moisture (H20) or another H2-containing species because the CO oxidation step involving the hydroxyl radical (-OH) is much faster than the steps involving O2 and O.
+
+\section*{Problem 3}
+Using the single-step global mechanism given by equation 1 and equation 2 for combustion of a hydrocarbon with air, compare the mass rates of fuel carbon conversion to CO2 for $\phi$ = 1, P = 1 atm, and T = 1600K for the following fuels:
+
+\subsection*{A. CH4 - methane}
+For $\phi=1$,
+$$C_xH_y+a(O_2+3.76N_2) -> xCO_2+\frac{y}{2}H_2O+3.76aN_2$$
+$$a=x+\frac{y}{4}$$
+$$CH_4+2O_2+7.52N_2 -> CO_2+2H_2O+7.52N_2$$
+Using this equation, can find the molar ratios:
+$$\chi_{CH_4}=\frac{1}{1+2+7.52}=0.0951$$
+$$\chi_{O_2}=\frac{2}{10.52}=0.1901$$
+Next, using the equation $\frac{P}{R_uT}$, can get concentrations:
+$$[CH_4]=\chi_{CH_4}\frac{P}{R_uT}=(0.0951)(7.617e-5\frac{mol}{m^3})=7.24e-6\frac{mol}{m^3}$$
+$$[O_2]=1.448e-5\frac{mol}{m^3}$$
+Can then use equation 2 to calculate mass rate of methane:
+$$\frac{d[C_xH_y]}{dt}=-Aexp(\frac{E_a}{R_uT})[C_xH_y]^m[O_2]^n$$
+$$\frac{d[CH_4]}{dt}=(-1.3e8)exp(\frac{24358K}{1600K})(7.24e{-6}\frac{mol}{m^3})^1(1.448e{-5}\frac{mol}{m^3})^2=557.2385gmol/m^3s$$
+\subsection*{B. C3H8 - propane}
+$$C_3H_8+5O_2+18.8N_2 -> 3CO_2+4H_2O+18.8N_2$$
+$$\chi_{O_2}=0.403$$
+$$\chi_{C_3H_8}=0.2016$$
+$$[C_3H_8]=3.0695e-6$$
+$$[O_2]=1.536e-5$$
+$$\frac{d[C_3H_8]}{dt}=(8.6e11)(exp(\frac{15098}{1600}))(3.0695e-6)^1(1.536e-5)^5=2.829e-16$$
+\subsection*{C. C8H18 - octane}
+$$C_8H_{18}+12.5O_2+47N_2 -> 8CO_2+9H_2O+47N_2$$
+$$\chi_{C_8H_{18}}=\frac{1}{1+12.5+47}=0.0165$$
+$$\chi_{O_2}=0.2066$$
+$$[C+8H_{18}]=1.26e-6$$
+$$[O_2]=1.57e-5$$
+$$\frac{d[C_8H_{18}]}{dt}=(4.6e9)(exp(\frac{15098}{1600}))(1.26e-6)(1.57e-5)^{7.5}=6.76e-29$$
+
+$$$$
+\section*{Problem 4}
+\textbf{Many experiments have shown that nitric oxide is formed very rapidly within flame zones and more slowly in postflame gases.  What factors contribute to this rapid formation of NO in flame zones? }\newline
+\indent There are four mechanisms by which nitric oxide is formed: thermal mechanism, Fenimore mechanism, $N_2O$-intermediate mechanism, and NNH mechanism.  The thermal mechanism contains two chain reactions:
+$$O+N_2 -> NO+N$$
+$$N+O_2 -> NO+O$$
+and can also include 
+$$N+OH -> NO+H$$
+Within flame zones, as described by the thermal mechanism, the system is no longer in equilibrium.  In flame zones, there may be super-equilibrium concentrations of O atoms, which leads to an increase in the rates of NO formation. \newline
+\indent In post flame gases, which are described by the Fenimore mechanism, nitric oxide formation rates are lower than in flame zones.  In the Fenimore mechanism of NO formation, which is closely linked to the combustion of hydrocarbons, the hydrocarbon radicals react with moleclar nitrogen to form NO, after having been in other intermediate forms. 
+
+\section*{Problem 5}
+\textbf{Identify the key radical in the conversion of NO to $NO_2$ in combustion systems.  Why does $NO_2$ not appear in high-temperature flame regions?} \newline
+\indent By noting the formation stage of the elementary reactions that lead to the conversion of NO to $NO_2$, the key radical is $HO_2$.  Because $HO_2$ radicals are formed in low-temperature regions, it would not be possible for this reaction stage to occur in high-temperature regions, and thus $NO_2$ does not appear in high-temperature flame regions. 
+
+\section*{Problem 6}
+Show that:
+$$\frac{d}{dx}\left(P=\frac{\rho R_u T}{MW_{mix}}\right) => \frac{1}{P}\frac{dP}{dx}=\frac{1}{\rho}\frac{d\rho}{dx}+..., etc$$
+Begin by taking the natural log of P:
+$$ln(P)=ln(\frac{\rho R_u T}{MW_{mix}}=ln(\rho)+ln(R_u)+ln(T)-ln(MW_{mix})$$
+Then, take the derivative of both sides with respect to x, and as a result of the chain rule:
+$$\frac{1}{P}\frac{dP}{dx}=\frac{1}{\rho}\frac{d\rho}{dx}+\frac{1}{R_u}\frac{dR_u}{dx}+\frac{1}{T}\frac{dT}{dx}-\frac{1}{MW_{mix}}\frac{dMW_{mix}}{dx}$$
+Know that $R_u$ is constant, so can simplify to:
+$$\frac{1}{P}\frac{dP}{dx}=\frac{1}{\rho}\frac{d\rho}{dx}+\frac{1}{T}\frac{dT}{dx}-\frac{1}{MW_{mix}}\frac{dMW_{mix}}{dx}$$
+
+\section*{Problem 7}
+Show that
+$$\frac{dMW_{mix}}{dx}=-MW_{mix}^2\Sigma_{i=1}^N\frac{1}{MW_{mix}}\frac{d\gamma_i}{dx}$$
+Know that
+$$MW_{mix}=\left[\Sigma_{i=1}^N\frac{\gamma_i}{MW_i}\right]^{-1}$$
+$$MW_{mix}=\frac{1}{\left[\Sigma_{i=1}^N\frac{\gamma_i}{MW_i}\right]}$$
+$$\frac{1}{MW_{mix}}=\Sigma_{i=1}^N\frac{\gamma_i}{MW_i}$$
+Take the derivative of both sides with respect to x:
+$$-\frac{1}{MW_{mix}^2}\frac{dMW_{mix}}{dx}=\frac{d}{dx}\Sigma_{i=1}^N\frac{\gamma_i}{MW_i}=\Sigma_{i=1}^N\frac{d}{dx}\frac{\gamma_i}{MW_i}$$
+Assuming that $MW_i$ is constant:
+$$-\frac{1}{MW_{mix}^2}\frac{dMW_{mix}}{dx}=\Sigma_{i=1}^N\frac{1}{MW_i}\frac{d\gamma_i}{dx}$$
+Rearranging:
+$$\frac{dMW_{mix}}{dx}=-{MW_{mix}^2}\Sigma_{i=1}^N\frac{1}{MW_i}\frac{d\gamma_i}{dx}$$
+
+\section*{Problem 8}
+\textbf{Consider a nonadiabatic well-stirred reactor with simplified chemistry, i.e., fuel, oxidizer, and a single product species.  The reactants, consisting of fuel, ($\gamma_F$ = 0.2) and oxidizer ($\gamma_{O_x}$ = 0.8) at 298K, flow into the 0.003 m$^3$ reactor at 0.5kg/s.  The reactor operaties at 1 atm and has a heat loss of 2000W.  Assume the following simplified thermodynamic properties: $c_p=1100$ J/kg-K (all species), $MW=$29kg/kmol (all species), $h^o_{f,F}$=-2000kJ/kg, $h^o_{f,O_x}$=0, and $h^o_{f,Pr}$=-4000kJ/kg.  The fuel and oxidizer mass fractions in the outlet stream are 0.001 and 0.003, respectively.  Determine the temperature in the reactor and the residence time.} \newline
+Have a flow going through a volume.  By conservation:
+$$\dot{m}_{in}=\dot{m}_{out}=0.5kg/s$$
+Know mass fractions in and out, so can calculate mass flow of fuel, oxidizer, and product
+$$\dot{m}_{i,F}=(0.2)(0.5)=0.1kg/s$$
+$$\dot{m}_{i,O_x}=(0.8)(0.5)=0.4kg/s$$
+$$\dot{m}_{o,F}=(0.001)(0.5)=0.0005kg/s$$
+$$\dot{m}_{o,O_x}=(0.003)(0.5)=0.00015kg/s$$
+$$\dot{m}_{o,P}=0.5-0.0005-0.00015=0.498kg/s$$
+Can calculate standard heat of the reaction
+$$(\dot{m}_{o,P}h^o_{f,Pr}+\dot{m}_{o,F}h^o_{f,F})-(\dot{m}_{o,P}h^o_{i,Pr}+\dot{m}_{o,F}h^o_{i,F})$$
+$$((0.498)(-4000)+(0.0005)(-2000))-((0)(-4000)+(0.1)(-2000))=-1793kJ/s$$
+Know heat loss is 2000W
+Heat used to change temperature is heat generated minus heat lost
+$$1793kW-2kW=1791kW=\dot{m}c_pdT=\dot{m}c_p(T_2-T_1)=(0.5)(1100)(T_2-298)$$
+$$T_2=3554.4K$$
+Can calculate density assuming ideal gas:
+$$\rho=\frac{(P)(MW)}{R_uT_2}=0.0994kg/m^3$$
+Know mass flow rate and volume:
+$$(0.5kg/s)^{-1}(0.0994kg/m^3)(0.003m^3)=0.000596s=\textrm{residence time}$$
+
+
+\end{document}
