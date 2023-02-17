@@ -1,0 +1,115 @@
+\documentclass[preview,12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{ragged2e}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+
+\geometry{letterpaper, margin=1in}
+
+\begin{document}
+
+\begin{center}
+    \section*{Homework 6}
+    \subsection*{Josh Coffey}
+    \subsection*{11/19/2019}
+\end{center}
+$$$$
+\begin{center}
+    \section*{Problem 9.8}
+\end{center}
+Air enters a compressor stage that has the following properties:
+$$\dot m=100\textrm{ }\frac{lbm}{s},\textrm{ }\omega = 1000\textrm{ }\frac{rad}{s},\textrm{ }r=12\textrm{ }in,\textrm{ }M_1=M_3=0.6$$
+$$\alpha_1=\alpha_3=42 \degree,\textrm{ }T_{t1}=518.7\degree R,\textrm{ }P_{t1}=14.7\textrm{ }psia,\textrm{ }\frac{u_2}{u_1}=1.0$$
+$$T_{t3}-T_{t1}=50\degree R,\textrm{ }\phi_{cr}=0.12,\textrm{ }\phi_{cs}=0.03,\textrm{ }\sigma=1$$
+Note: For air, use $\gamma$=1.4 and $R=53.34$ $\frac{ft\cdot lbf}{(lbm \cdot \degree R)}$.  Make and fill out a table of flow properties like Table 9.3, and determine the diffusion factors, degree of reaction, stage efficiency, polytropic efficiency, and flow areas and associated hub and tip radii at stations 1, 2, and 3.
+
+\begin{center}
+    \section*{Solution}
+\end{center}
+
+$$T_1=\frac{T_{t1}}{1+[(\gamma-1)/2]M_1^2}=483.86\degree R$$
+$$a_1=\sqrt{\gamma R g_c T_1}=1078.21\frac{ft}{s}$$
+$$V_1=M_1a_1=646.926\frac{ft}{s}$$
+$$u_1=V_1cos(\alpha_1)=480.76\frac{ft}{s}$$
+$$v_1=V_1sin(\alpha_1)=432.88\frac{ft}{s}$$
+$$P_1=\frac{P_{t1}}{(1+[(\gamma-1)/2M_1^2]^{\gamma/(\gamma-1)}}=11.52psia$$
+$$MFP(M_1)=\sqrt{\frac{\gamma g_c}{R}}\left(\frac{2}{\gamma+1}\right)^{\frac{\gamma+1}{2(\gamma-1)}}=0.489$$
+$$A_1=\frac{\dot{m}\sqrt{T_{t1}}}{P_{t1}(cos\alpha_1)MFP(M_1)}=42.587ft^2$$
+$$\omega r = 12000 in/s = 1000 ft/s$$
+
+$$v_{1R}=\omega r-v_1=1000-432.88=567.12ft/s$$
+$$\beta_1=tan^{-1}\frac{v_{1R}}{u_1}=tan^{-1}\frac{567.12ft/s}{480.76\frac{ft}{s}}=49.7\degree$$
+$$V_{1R}=\sqrt{u_1^2+v_{1R}^2}=\sqrt{480.76\frac{ft}{s}^2+567.12ft/s^2}=743.475ft/s$$
+$$M_{1R}=\frac{V_{1R}}{a_1}=\frac{743.475ft/s}{1078.21\frac{ft}{s}}=0.6895$$
+$$T_{t1R}=T_1\left(1+\frac{\gamma-1}{2}M_{1R}^2\right)=483.86\degree R\left(1+\frac{1.4-1}{2}0.6895^2\right)=529.8664\degree R$$
+$$T_{1R}=\frac{T_{t1R}}{1+[(\gamma-1)/2]M_{1R}^2}=\frac{529.8664\degree R}{1+[(1.4-1)/2]0.6895^2}=483.8599\degree R$$
+$$P_{t1R}=P_1\left(\frac{T_{t1R}}{T_1}\right)^{\frac{\gamma}{\gamma-1}}=15.83psia$$
+$$P_{1R}=\frac{P_{t1R}}{[1+((\gamma-1)/2)*M_{1R}^2]^{\gamma/(\gamma-1)}}=\frac{15.83psia}{[1+((1.4-1)/2)*0.6895^2]^{1.4/(1.4-1)}}=11.5191psia$$
+
+
+
+$$P_{t2R}=P_{t1R}\left(1-\phi_{cr}\frac{\gamma M_{1R}^2/2}{(1+[(\gamma-1)/2]M_{1R}^2)^{\gamma / (\gamma-1)}}\right)$$
+$$=15.83psia\left(1-0.12\frac{(1.4) 0.6895^2/2}{(1+[(1.4-1)/2]0.6895^2)^{1.4 / (1.4-1)}}\right)=15.64943psia$$
+$$T_{t2R}=T_{t1R}=529.8664\degree R$$
+$$T_{t2}=T_{t1}+\Delta T_{t}=518.7+50=568.7$$
+$$tan \beta_2=\frac{u_2}{u_1}\left[tan\beta_1-\frac{g_cc_p}{\omega r u_1}(T_{t2}-T_{t1})\right]$$
+$$\beta_2=tan^{-1}\left(\frac{u_2}{u_1}\left[tan\beta_1-\frac{g_cc_p}{\omega r u_1}(T_{t2}-T_{t1})\right]\right)=49.69\degree$$
+$$u_2=\frac{u_2}{u_1}u_1=480.76 ft/s$$
+$$v_{2R}=u_2tan\beta_2=566.69 ft/s$$
+$$V_{2R}=\sqrt{v_{2R}^2+u_2^2}=743.15 ft/s$$
+$$v_2=\omega r-v_{2R}=433.31 ft/s$$
+$$\alpha_2=tan^{-1}\frac{v_2}{u_2}=42.03\degree$$
+$$V_2=\sqrt{u_2^2+v_2^2}=647.22 ft/s$$
+$$T_2=T_{t2}-\frac{V_c^2}{2g_cc_p}=562.22 \degree R$$
+$$P_2=P_{t2R}\left(\frac{T_2}{T_{t2R}}\right)^{\gamma/\gamma-1}=18.76 psia$$
+$$a_2=\sqrt{\gamma R g_c T_2}=1162.24 ft/s$$
+$$M_2=\frac{V_2}{a_2}=0.557$$
+$$M_2R=\frac{V_{2R}}{a_2}=0.639$$
+$$P_{t2}=P_2\left(\frac{T_{t2}}{T_2}\right)^{\gamma/\gamma-1}=19.53 psia $$
+$$MFP(M_2)=\frac{M_2\sqrt{\frac{\gamma g_c}{R}}}=0.6459$$
+$$A_2=\frac{\dot m\sqrt{T_{t2}}}{P_{t2}cos(\alpha_2)MFP(M_2)}=1.767ft^2$$
+$$T_{t3}=T_{t1}+50=568.7 \degree R$$
+$$T_3=\frac{T_{t3}}{1+\frac{\gamma-1}{2}M_3^2}=530.5\degree R$$
+$$P_{t3}=P_{t2}\left(1-\phi_{cr}\frac{\gamma M_{2}^2/2}{(1+[(\gamma-1)/2]M_{2}^2)^{\gamma / (\gamma-1)}}\right)=19.34psia$$
+$$P_3=P_{t3}\left(\frac{T_3}{T_{t3}}\right)^{\gamma/\gamma-1}=15.16 psia$$
+$$a_3=\sqrt{\gamma R g_c T_3}=1128.98ft/s$$
+$$V_3=M_3a_3=677.38ft/s$$
+$$u_3=V_3cos\alpha_3=503.39ft/s$$
+$$v_3=V_3sin\alpha_3=453.25ft/s$$
+$$MFP(M_3)=MFP(M_1)\textrm{ because }M_1=M_3$$
+$$A_3=\frac{\dot{m}\sqrt{T_t3}}{{P_t3}cos(\alpha_3)MFP(M_3)}=2.575 ft^2$$
+$$\degree R_c=\frac{T_2-T_1}{T_3-T_1}=1.68$$
+$$D_R=1-\frac{V_{2R}}{V_{1R}}+\frac{(v_{1R}-v_{2R})}{2\sigma V_{1R}}=0.009$$
+$$D_S=1-\frac{V_{3}}{V_{2}}+\frac{(v_{2}-v_{3})}{2\sigma V_{2}}=-0.062$$
+$$\eta_S=\frac{\left(\frac{P_{t3}}{P_{t1}}\right)^{\gamma-1/\gamma}-1}{\frac{T_{t3}}{T_{t1}}-1}=0.846$$
+$$e_c=\frac{\gamma-1}{\gamma}\frac{ln\left(\frac{P_{t3}}{P_{t1}}\right)}{ln\left(\frac{T_{t3}}{T_{t1}}\right)}=0.852$$
+$$\Psi=\frac{g_cc_p\Delta T_t}{(\omega r)^2}=1.615$$
+$$\phi=\frac{u_1}{\omega r}=0.4807$$
+$$$$
+
+\begin{center}
+    \section*{Table}
+\end{center}
+$$
+\begin{array}{ | l | l | l | l | l | l | l | }
+\hline
+	Property & units & 1 & 1R & 2R & 2 & 3 \\ \hline
+	Tt & R & 518.7 & 529.8664 & 529.8664 & 568.7 & 568.7 \\ \hline
+	T & R & 483.86 & 483.859 & 483.859 & 562.22 & 530.5 \\ \hline
+	Pt & psia & 14.7 & 15.83 & 15.64943 & 19.53 & 19.34 \\ \hline
+	P & psia & 11.52 & 11.5191 & 11.5191 & 18.76 & 15.16psia \\ \hline
+	M &  & 0.6 & 0.0689 & 0.639 & 0.557 & 0.6 \\ \hline
+	V & ft/s & 646.926 & 743.475 & 743.15 & 647.22 & 677.38 \\ \hline
+	u & ft/s & 480.76 & 480.76 & 480.76 & 480.76 & 503.39 \\ \hline
+	v & ft/s & 432.88 & 567.12 & 566.69 & 433.31 & 453.25 \\ \hline
+	alpha & \degree & 42 &  &  & 42.03 & 42 \\ \hline
+	beta & \degree & 49.7 &  &  & 49.69 &  \\ \hline
+\end{array}
+$$
+
+\end{document}
