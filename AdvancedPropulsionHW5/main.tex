@@ -1,0 +1,103 @@
+\documentclass[preview,12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{ragged2e}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+
+\geometry{letterpaper, margin=1in}
+
+\begin{document}
+
+\begin{center}
+    \section*{HW 5}
+    \subsection*{Josh Coffey}
+    \subsection*{11/7/2019}
+\end{center}
+
+$$$$
+
+\begin{center}
+    \section*{Problem 7.15}
+\end{center}
+Calculate the performance of a turbofan engine with the basic data of Example 7.6 but with a fan pressure ratio of 1.65 and a bypass ratio of 10.  Comment on the improvement in engine performance.  Compare your results to those of the PARA computer program.
+
+\subsubsection*{Inputs}
+$$M_0=0.8,\textrm{ }T_0=390\degree R,\textrm{ }\gamma_c=1.4,\textrm{ }c_{pc}=0.240 \frac{Btu}{lbm \cdot \degree R}$$
+$$\gamma_t=1.33,\textrm{ }c_{pt}=0.276 \frac{Btu}{lbm \cdot \degree R},\textrm{ }h_{PR}=18,400 \frac{Btu}{lbm}$$
+$$\pi_{dmax}=0.99,\textrm{ }\pi_b=0.96,\textrm{ }\pi_n=0.99,\textrm{ }\pi_{fn}=0.99,\textrm{ }e_c=0.90,\textrm{ }e_f=0.89$$
+$$\pi_t=0.89,\textrm{ }\eta_b=0.99,\textrm{ }\eta_m=0.99,\textrm{ }\frac{P_0}{P_9}=0.9,\textrm{ }\frac{P_0}{P_{19}}=0.9$$
+$$T_{t4}=3000 \degree R,\textrm{ }\pi_c=36,\textrm{ }\pi_f=1.65,\textrm{ }\alpha=10$$
+
+\subsubsection*{Equations}
+From Example 7.6, the equations that will change are: 
+$$\eta_f=\frac{\pi_f^{(\gamma_c-1)}{\gamma_c}-1}{\tau_f-1}=\boxed{0.828328=82.8328\%}$$
+This is a decrease from EX 7.6.
+$$\frac{F}{\dot{m}_0}=\frac{1}{1+\alpha}\frac{a_0}{g_c}\left[(1+f)\frac{V_9}{a_0}-M_0+(1+f)\frac{R_tT_9/T_0}{R_cV_9/A_0}\frac{1-P_0/P_9}{\gamma_c}\right]$$
+$$+\frac{\alpha}{1+\alpha}\frac{a_0}{g_c}\left(\frac{V_{19}}{a_0}-M_0+\frac{T_{19}/T_0}{V_{19}/a_0}\frac{1-P_0/P_{19}}{\gamma_c}\right)$$
+$$=4.9057+12.29998=\boxed{17.206\textrm{ lbf/(lbm/s)}}$$
+This is a decrease from EX 7.6.
+$$S=\frac{f}{(1+\alpha)F/\dot{m}_0}=0.5455\textrm{ (lbm/h)/lbf}$$
+This is a decrease from EX 7.6.
+$$\eta_P=\frac{2M_0[(1+f)V_9/a_0+\alpha(V_{19}/a_0)-(1+\alpha)M_0]}{(1+f)(V_9/a_0)^2+\alpha(V_{19}/a_0)^2-(a+\alpha)M_0^2}$$
+$$=\frac{5.5567}{13.7252}=\boxed{.40485=40.485\%}$$
+$$\eta_T=\frac{a_0^2[(1+f)(V_9/a_0)^2+\alpha(V_{19}/a_0)^2-(1+\alpha)M_0^2]}{2g_cfh_{PR}}$$
+$$=\frac{12266235.71}{26424143.92}=\boxed{.46421=46.421\%}$$
+This is an increase from EX 7.6.
+$$\eta_O=\eta_T\eta_P=0.40485*0.46421=\boxed{0.18794=18.794\%}$$
+This is a decrease from EX 7.6.
+
+\subsubsection*{Comparison with PARA}
+PARA gives the following values \newline
+$$\textrm{alpha  F/mdot    S   Pt9/P9  V9/V0  T Eff  P Eff  P0/P9}$$
+$$\textrm{ 7.00   19.06  0.7786  1.851 2.5643 33.488 58.120 0.4886}$$
+$$\textrm{ 10.00  15.71  0.6870  1.851 2.4366 31.783 69.406 0.7759}$$ 
+
+$$$$
+
+\begin{center}
+    \section*{Problem 9.5}
+\end{center}
+Air flows through an axial compressor stage with the following properties:
+$$T_{t1}=290 K,\textrm{ } P_{t1} = 101.3 kPa,\textrm{ }\frac{u_2}{u_1}=1.0,\textrm{ } $$
+$$M_1=0.6,\textrm{ }\alpha_1=40\degree,\textrm{ } \alpha_2=57.67\degree,\textrm{ } U=\omega r_m=360\frac{m}{s}$$
+Note: for air, use $\gamma=1.4$ and $R=0.286 \frac{kJ}{(kg \cdot K)}$.   Determine the following: \newline
+(a) $V_1, u_1, v_1$ \newline
+(b) $u_2, V_2, v_2$ \newline
+(c) $\Delta T_t$ and $\tau_s$ for the stage \newline
+(d)$\pi_s$ and $P_{t3}$ for a polytropic efficiency of 0.88
+$$$$
+\subsection*{Solution}
+
+\subsubsection*{a)}
+Know
+$$V_1=M_1*a_1$$
+Need 
+$$a_1=\sqrt{\gamma R T_1}$$
+$$T_1=\frac{T_{t1}}{1+\frac{\gamma-1}{2}M_1^2}=270.52K$$
+$$a_1=329.11\frac{m}{s}$$
+$$V_1=0.6*10.41=\boxed{197.47\frac{m}{s}}$$
+Know
+$$u_1=V_1*cos\alpha_1=\boxed{151.27\frac{m}{s}}$$
+Know
+$$v_1=V_1*sin\alpha_1=\boxed{126.93\frac{m}{s}}$$
+
+\subsubsection*{b)}
+$$u_2=u_1=\boxed{151.27\frac{m}{s}}$$
+$$u_2=V_2*cos\alpha_2$$
+$$V_2=\frac{u_2}{cos\alpha_2}=\boxed{282.86 \frac{m}{s}}$$
+$$v_2=V_2sin\alpha_2=\boxed{239.01\frac{m}{s}}$$
+
+\subsubsection*{c)}
+$$\Delta T_t=T_{t2}-T_{t1}$$
+$$T_{t2}=T_{t3} \textrm{ assuming isentropic flow}$$
+$$T_{t3}=300$$
+$$\Delta T_t = 10K$$
+$$\tau_s=10$$
+
+
+\end{document}
